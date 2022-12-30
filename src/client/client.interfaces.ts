@@ -1,16 +1,41 @@
 
-import { Entity, Rect, RGBA, Vector, Vector2D } from "../shared/shared.classes";
-import { BigMessageType, ExplosionType, SmallMessageType } from "../shared/shared.enums";
+import { Client, Entity, NetworkElement, Rect, RGBA, Vector, Vector2D } from "../shared/shared.classes";
+import { BigMessageType, ExplosionType, SmallMessageType, WeaponType } from "../shared/shared.enums";
 import { AudioStream, D3DTexture, RwTexture } from "./client.classes";
-import { GarageType } from "./client.enums";
+import { GarageType, PedPieceType } from "./client.enums";
+
+export interface IClientEvents {
+    /* resource */
+    OnResourceStart(): void;
+    OnResourceStop(): void;
+    /* client */
+    OnClientConnect(client: Client): void;
+    OnClientStartResourcesDownload(): void;
+    OnClientEndResourcesDownload(): void;
+    OnClientCommand(cmd: string, text: string): void;
+    OnClientDisconnect(client: Client): void;
+    /* elements */
+    OnElementStreamIn(element: NetworkElement): void;
+    OnElementStreamOut(element: NetworkElement): void;
+    /* ped */
+    OnPedEnterVehicle(ped: NetworkElement, vehicle: NetworkElement, seat: number): void;
+    OnPedEnterVehicleAbort(ped: NetworkElement, vehicle: NetworkElement): void;
+    OnPedEnteredVehicle(ped: NetworkElement, vehicle: NetworkElement, seat: number): void;
+    OnPedExitVehicle(ped: NetworkElement, vehicle: NetworkElement): void;
+    OnPedInflictDamage(ped: NetworkElement, damagedBy: NetworkElement, method: WeaponType, damage: number, pedPiece: PedPieceType, direction: number, wasDamaged: number): void;
+    /* misc */
+    OnRender(): void;
+    OnWaterCannonExtinguishFire(position: Vector, range: number): void;
+    OnKeyDown(key: number): void;
+}
 
 export interface audio {
-    playFrontEndSound(id: number) : void;
+    playFrontEndSound(id: number): void;
     playFrontEndTrack(track: number, flag: number): void;
     stopFrontEndTrack(): void;
     playOneShot(audioEntityId: number, oneShot: number, volume: number): void;
     isMP3RadioChannelAvailable(): boolean;
-};
+}
 
 export interface camera {
     restore() : void;
@@ -19,20 +44,20 @@ export interface camera {
     shake(strength: number, x: number, y: number, z: number): void;
     shakeNoPos(strength: number): void;
     setCamPositionForFixedMode(source: Vector, offset: Vector): void;
-};
+}
 
 export interface discord {
     name: string;
     state: string;
     details: string;
-};
+}
 
 export interface dx {
     createTextureFromImage(path: string) : D3DTexture;
     drawText(text: string, rect: Rect, scaleX: number, scaleY: number, rgba: RGBA, fontname?: "default", alignX?: "left", alignY?: "top", noClip?: false, wordBreak?: true): void;
     drawRectangle(x: number, y: number, width: number, height: number, rgba: RGBA): void;
     drawTexture(tex: D3DTexture, pos: Vector2D, size: Vector2D, center: Vector2D, rotation: number, color: RGBA): void;
-};
+}
 
 export interface font {
     printstring(x: number, y: number, text: string): void;
@@ -61,7 +86,7 @@ export interface font {
     setColor(rgba: RGBA): void;
     setDropColor(rgba: RGBA): void;
     drawFonts(): void;
-};
+}
 
 export interface gta {
     respawnPlayer(pos: Vector, heading: number): void;
@@ -83,7 +108,7 @@ export interface gta {
     hideHUD(status: boolean): void;
     getGravity(): number;
     setGravity(gravity: number): void;
-};
+}
 
 export interface loader {
     loadVehicleXml(path: string): boolean;
@@ -95,7 +120,7 @@ export interface loader {
     swapTXD(modelname: string, path: string): boolean;
     swapCOL(modelname: string, path: string): boolean;
     loadRadarSprite(path: string): boolean;
-};
+}
 
 export interface messages {
     pager(msg: string, speed: number, priority: number): void;
@@ -103,25 +128,25 @@ export interface messages {
     clearSmallMessagesOnly(): void;
     small(msg: string, time: number, type: SmallMessageType): void;
     big(msg: string, time: number, style: BigMessageType): void;
-};
+}
 
 export interface sound {
     open(path: string): AudioStream;
-};
+}
 
 export interface sprite2d {
     drawRect(rect: Rect, rgba: RGBA): void;
-};
+}
 
 export interface sprite {
     calcScreenCoors(vec: Vector, farClip: boolean): Object;
     renderOneXLUSprite(vec: Vector, w: number, h: number, rgba: RGBA, intens: number, recipz: number): void;
-};
+}
 
 export interface timer {
     getTimeInMilliseconds(): number;
     getPreviousTimeInMilliseconds(): number;
-};
+}
 
 export interface world {
     add(ent: Entity): void;

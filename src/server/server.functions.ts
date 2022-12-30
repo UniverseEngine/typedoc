@@ -1,8 +1,12 @@
 
-import { Actor, Building, Client, Vector } from "../shared";
+import { Actor, Blip, Building, Client, Entity, Fire, Marker, MarkerType, RGBA, SpriteType, Vector } from "../shared";
 
-export function messageClient(name: string, client: Client): void { }
-export function callClientFunc(client: Client, name: string, ...args: any): void { }
+declare function messageClient(name: string, client: Client): void;
+declare function registerRemoteFunc(name: string): void;
+declare function callClientFunc(client: Client, name: string, ...args: any): void;
 
-export function createActor(model: number, position: Vector, heading: number): Actor { return new Actor }
-export function createBuilding(model: number, position: Vector): Building { return new Building }
+declare function createActor(model: number, position: Vector, heading: number): Actor;
+declare function createBuilding(model: number, position: Vector): Building;
+declare function createBlip(position: Vector, scale: number, color: RGBA, sprite: SpriteType, entity: Entity): Blip;
+declare function createFire(position: Vector, propagation: boolean, strength: number): Fire;
+declare function createMarker(isSet: boolean, type: MarkerType, position: Vector, size: number, rgba: RGBA, pulsePeriod: number, pulseFraction: number, rotateRate: number): Marker;

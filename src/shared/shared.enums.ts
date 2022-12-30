@@ -21,7 +21,7 @@ export enum SpriteType {
     RADAR_SPRITE_SPRAY,
     RADAR_SPRITE_TONY,
     RADAR_SPRITE_WEAPON,
-};
+}
 
 export enum EntityStatus {
     STATUS_PLAYER,
@@ -36,7 +36,7 @@ export enum EntityStatus {
     STATUS_PLANE,
     STATUS_PLAYER_REMOTE,
     STATUS_PLAYER_DISABLED
-};
+}
 
 export enum EntityTypeStatus {
     ENTITY_TYPE_NOTHING,
@@ -45,7 +45,7 @@ export enum EntityTypeStatus {
     ENTITY_TYPE_PED,
     ENTITY_TYPE_OBJECT,
     ENTITY_TYPE_DUMMY,
-};
+}
 
 export enum WeaponType {
     WEAPONTYPE_UNARMED,
@@ -71,7 +71,7 @@ export enum WeaponType {
     WEAPONTYPE_DROWNING,
     WEAPONTYPE_FALL,
     WEAPONTYPE_UNIDENTIFIED,
-};
+}
 
 export enum WeaponFireType {
     WEAPON_FIRE_MELEE,
@@ -79,7 +79,7 @@ export enum WeaponFireType {
     WEAPON_FIRE_PROJECTILE,
     WEAPON_FIRE_AREA_EFFECT,
     WEAPON_FIRE_USE
-};
+}
 
 export enum WeaponStateType {
     WEAPONSTATE_READY,
@@ -103,7 +103,7 @@ export enum NetworkElementType {
     OBJECT,
     BUILDING,
     FIRE,
-};
+}
 
 export enum PedType {
     PEDTYPE_PLAYER1,
@@ -129,7 +129,7 @@ export enum PedType {
     PEDTYPE_PROSTITUTE,
     PEDTYPE_SPECIAL,
     PEDTYPE_UNUSED2,
-};
+}
 
 export enum ExplosionType {
     EXPLOSION_GRENADE,
@@ -142,7 +142,7 @@ export enum ExplosionType {
     EXPLOSION_BARREL,
     EXPLOSION_TANK_GRENADE,
     EXPLOSION_HELI_BOMB
-};
+}
 
 export enum RadioStationType {
     HEAD_RADIO,
@@ -158,12 +158,12 @@ export enum RadioStationType {
     POLICE_RADIO = 10,
     NUM_RADIOS = 10,
     RADIO_OFF = 11,
-};
+}
 
 export enum MarkerType {
     MARKERTYPE_ARROW = 1,
     MARKERTYPE_CYLINDER = 4,
-};
+}
 
 export enum PickupType {
     PICKUP_NONE,
@@ -181,27 +181,27 @@ export enum PickupType {
     PICKUP_FLOATINGPACKAGE,
     PICKUP_FLOATINGPACKAGE_FLOATING,
     PICKUP_ON_STREET_SLOW,
-};
+}
 
 export enum WeatherType {
     WEATHER_SUNNY,
     WEATHER_CLOUDY,
     WEATHER_RAINY,
     WEATHER_FOGGY
-};
+}
 
 export enum EntityModel {
 
-};
+}
 
 export enum PickupModel {
 
-};
+}
 
 export enum SmallMessageType {
 
-};
+}
 
 export enum BigMessageType {
 
-};
+}
