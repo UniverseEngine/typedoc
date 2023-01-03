@@ -52,16 +52,9 @@ export interface discord {
     details: string;
 }
 
-export interface dx {
-    createTextureFromImage(path: string) : D3DTexture;
-    drawText(text: string, rect: Rect, scaleX: number, scaleY: number, rgba: RGBA, fontname?: "default", alignX?: "left", alignY?: "top", noClip?: false, wordBreak?: true): void;
-    drawRectangle(x: number, y: number, width: number, height: number, rgba: RGBA): void;
-    drawTexture(tex: D3DTexture, pos: Vector2D, size: Vector2D, center: Vector2D, rotation: number, color: RGBA): void;
-}
-
 export interface font {
-    printstring(x: number, y: number, text: string): void;
-    printstringFromBottom(x: number, y: number, text: string): void;
+    printString(x: number, y: number, text: string): void;
+    printStringFromBottom(x: number, y: number, text: string): void;
     setScale(x: number, y: number): void;
     setSlantRefPoint(x: number, y: number): void;
     setSlant(s: number): void;
@@ -101,8 +94,6 @@ export interface gta {
     setWeather(weather: number): void;
     setGameClock(hour: number, min: number): void;
     addExplosion(entity: Entity, culprit: Entity, type: ExplosionType, pos: Vector, lifetime: number): void;
-    createTextureFromImage(path: string): RwTexture;
-    destroyTexture(tex: RwTexture): void;
     areControlsDisabled(): boolean;
     disableControls(status: boolean): void;
     hideHUD(status: boolean): void;
@@ -149,8 +140,6 @@ export interface timer {
 }
 
 export interface world {
-    add(ent: Entity): void;
-    remove(ent: Entity): void;
     findGroundZFor3DCoord(vec: Vector): number;
     findGroundZForCoord(vec: Vector2D): number;
     processLineOfSight(vec1: Vector, vec2: Vector, checkBuildings: boolean, checkVehicles: boolean, checkPeds: boolean, checkObjects: boolean, checkDummies: boolean, ignoreSeeThrough: boolean, ignoreSomeObjects: boolean): boolean;
