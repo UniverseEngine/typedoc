@@ -12,14 +12,6 @@ export class AudioStream {
     setVolume(volume: number): void {}
 }
 
-export class RwTexture {
-
-}
-
-export class D3DTexture {
-
-}
-
 export class ClientPed extends Ped {
     getWeaponAmmoInClip(weapon: number): void { }
     getWeaponAmmo(weapon: number): void { }

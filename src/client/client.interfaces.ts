@@ -1,7 +1,7 @@
 
 import { Client, Entity, NetworkElement, Rect, RGBA, Vector, Vector2D } from "../shared/shared.classes";
 import { BigMessageType, ExplosionType, SmallMessageType, WeaponType } from "../shared/shared.enums";
-import { AudioStream, D3DTexture, RwTexture } from "./client.classes";
+import { AudioStream } from "./client.classes";
 import { GarageType, PedPieceType } from "./client.enums";
 
 export interface IClientEvents {
