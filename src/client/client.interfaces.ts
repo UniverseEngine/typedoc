@@ -91,14 +91,14 @@ export interface gta {
     openGarage(id: GarageType): void;
     closeGarage(id: GarageType): void;
     isBoat(model: number): boolean;
-    setWeather(weather: number): void;
     setGameClock(hour: number, min: number): void;
     addExplosion(entity: Entity, culprit: Entity, type: ExplosionType, pos: Vector, lifetime: number): void;
     areControlsDisabled(): boolean;
     disableControls(status: boolean): void;
     hideHUD(status: boolean): void;
-    getGravity(): number;
-    setGravity(gravity: number): void;
+
+    weather: number;
+    gravity: number;
 }
 
 export interface loader {
