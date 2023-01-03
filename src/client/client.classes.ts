@@ -36,3 +36,61 @@ export class ClientVehicle extends Vehicle {
 export class ClientPhysical extends Physical {
     public audioEntityId: number;
 }
+
+export declare class RmlElement {
+    getAbsoluteLeft(): number;
+    getAbsoluteTop(): number;
+    setAttribute(attr: string, value: string): string;
+    getAttribute(attr: string): string;
+    getNumChildren(): number;
+    getChild(n: number): RmlElement;
+    isClassSet(cls: string): boolean;
+    setClass(cls: string, value: boolean): void;
+    getClientHeight(): number;
+    getClientLeft(): number;
+    getClientTop(): number;
+    getClientWidth(): number;
+    getFirstChild(): RmlElement;
+    getId(): string;
+    setId(id: string): void;
+    getInnerRML(): string;
+    setInnerRML(rml: string): void;
+    getLastChild(): RmlElement;
+    getNextSibling(): RmlElement;
+    getOffsetHeight(): number;
+    getOffsetLeft(): number;
+    getOffsetParent(): number;
+    getOffsetTop(): number;
+    getOffsetWidth(): number;
+    getOwnerDocument(): RmlDocument;
+    getParentNode(): RmlElement;
+    getPreviousSibling(): RmlElement;
+    getScrollHeight(): number;
+    getScrollLeft(): number;
+    getScrollTop(): number;
+    getScrollWidth(): number;
+    getProperty(prop: string): string;
+    setProperty(prop: string, value: string): void;
+    getTagName(): string;
+    blur(): void;
+    click(): void;
+    focus(): void;
+    getElementById(id: string): RmlElement;
+    hasAttribute(attr: string): boolean;
+    hasChildNodes(): boolean;
+    appendChild(element: RmlElement): RmlElement;
+    removeChild(element: RmlElement): RmlElement;
+    destroy(): void;
+}
+
+export declare class RmlDocument extends RmlElement {
+    pullToFront(): void;
+    pushToBack(): void;
+    show(): void;
+    hide(): void;
+    updateDocument(): void;
+    createElement(tag: string): RmlElement;
+    createTextNode(text: string): RmlElement;
+
+    title: string;
+}

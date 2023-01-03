@@ -1,7 +1,7 @@
 
 import { Client, Entity, NetworkElement, Rect, RGBA, Vector, Vector2D } from "../shared/shared.classes";
 import { BigMessageType, ExplosionType, SmallMessageType, WeaponType } from "../shared/shared.enums";
-import { AudioStream } from "./client.classes";
+import { AudioStream, RmlDocument } from "./client.classes";
 import { GarageType, PedPieceType } from "./client.enums";
 
 export interface IClientEvents {
@@ -99,6 +99,11 @@ export interface gta {
 
     weather: number;
     gravity: number;
+}
+
+export interface gui {
+    loadDocument(doc: string): RmlDocument;
+    loadFontFace(ttf: string): boolean;
 }
 
 export interface loader {
