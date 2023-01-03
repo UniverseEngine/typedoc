@@ -51,38 +51,37 @@ export class Rect {
     public bottom: number;
 }
 
-export class NetworkElement {
+export declare class NetworkElement {
     public id: number;
     public elementType: NetworkElementType;
-    public syncer: number;
     public owner: number;
-    getData(key: string): null|string|boolean|number { return null; }
-    setData(key: string, value: null|string|boolean|number): void {}
+    getData(key: string): null|string|boolean|number;
+    setData(key: string, value: null|string|boolean|number): void;
 }
 
-export class Transformable extends NetworkElement {
+export declare class Transformable extends NetworkElement {
     public position: Vector;
     public heading: number;
 }
 
-export class Entity extends Transformable {
+export declare class Entity extends Transformable {
     public model: EntityModel;
     public status: EntityStatus;
     public usesCollision: boolean;
 }
 
-export class Building extends Entity {
+export declare class Building extends Entity {
 
 }
 
-export class Physical extends Entity {
+export declare class Physical extends Entity {
     public moveSpeed: Vector;
     public turnSpeed: Vector;
     public moveFriction: Vector;
     public turnFriction: Vector;
 }
 
-export class Ped extends Physical {
+export declare class Ped extends Physical {
     public pedState: number;
     public health: number;
     public armour: number;
@@ -97,17 +96,17 @@ export class Ped extends Physical {
     public kindaStayInSamePlace: boolean;
 }
 
-export class PlayerPed extends Ped {
+export declare class PlayerPed extends Ped {
     public wantedLevel: number;
     public money: number;
     public infiniteSprint: boolean;
 }
 
-export class Actor extends Ped {
+export declare class Actor extends Ped {
 
 }
 
-export class Vehicle extends Physical {
+export declare class Vehicle extends Physical {
     public colour1: number;
     public colour2: number;
     public alarm: number;
@@ -117,24 +116,24 @@ export class Vehicle extends Physical {
     public engineOn: boolean;
     public canBeDamaged: boolean;
     public health: number;
-    getPassenger(id: number): Ped { return new Ped; }
+    getPassenger(id: number): Ped;
 }
 
-export class Blip extends NetworkElement {
+export declare class Blip extends NetworkElement {
     public position: Vector;
     public scale: number;
     public color: RGBA;
     public sprite: SpriteType;
 }
 
-export class Fire extends NetworkElement {
-    public extinguish(): void {}
+export declare class Fire extends NetworkElement {
+    public extinguish(): void;
     public position: Vector;
     public propagation: boolean;
     public strength: number;
 }
 
-export class Marker extends NetworkElement {
+export declare class Marker extends NetworkElement {
     public position: Vector;
     public type: number;
     public size: number;
@@ -144,7 +143,7 @@ export class Marker extends NetworkElement {
     public rotateRate: number;
 }
 
-export class Object extends Entity {
+export declare class Object extends Entity {
     public uprootLimit: number;
     public isPickup: boolean;
     public glassCracked: boolean;
@@ -160,13 +159,13 @@ export class Object extends Entity {
     public colour2: number;
 }
 
-export class Pickup extends NetworkElement {
+export declare class Pickup extends NetworkElement {
     public model: PickupModel;
     public position: Vector;
     public type: PickupType;
 }
 
-export class Client {
+export declare class Client {
     public id: number;
     public name: string;
     public player: PlayerPed;
