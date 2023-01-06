@@ -22,7 +22,7 @@ export interface IClientEvents {
     OnPedEnterVehicleAbort(ped: NetworkElement, vehicle: NetworkElement): void;
     OnPedEnteredVehicle(ped: NetworkElement, vehicle: NetworkElement, seat: number): void;
     OnPedExitVehicle(ped: NetworkElement, vehicle: NetworkElement): void;
-    OnPedInflictDamage(ped: NetworkElement, damagedBy: NetworkElement, method: WeaponType, damage: number, pedPiece: PedPieceType, direction: number, wasDamaged: number): void;
+    OnPedInflictDamage(ped: NetworkElement, damagedBy: NetworkElement, method: WeaponType, damage: number, pedPiece: PedPieceType, direction: number, wasKiled: boolean): void;
     /* misc */
     OnRender(): void;
     OnWaterCannonExtinguishFire(position: Vector, range: number): void;
