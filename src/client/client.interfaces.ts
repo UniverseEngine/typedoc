@@ -2,7 +2,7 @@
 import { Client, Entity, NetworkElement, Rect, RGBA, Vector, Vector2D } from "../shared/shared.classes";
 import { BigMessageType, ExplosionType, SmallMessageType, WeaponType } from "../shared/shared.enums";
 import { AudioStream, RmlDocument } from "./client.classes";
-import { GarageType, PedPieceType } from "./client.enums";
+import { CameraFade, GarageType, PedPieceType } from "./client.enums";
 
 export interface IClientEvents {
     /* resource */
@@ -22,10 +22,13 @@ export interface IClientEvents {
     OnPedEnterVehicleAbort(ped: NetworkElement, vehicle: NetworkElement): void;
     OnPedEnteredVehicle(ped: NetworkElement, vehicle: NetworkElement, seat: number): void;
     OnPedExitVehicle(ped: NetworkElement, vehicle: NetworkElement): void;
+    OnPedExitedVehicle(ped: NetworkElement, vehicle: NetworkElement): void;
     OnPedInflictDamage(ped: NetworkElement, damagedBy: NetworkElement, method: WeaponType, damage: number, pedPiece: PedPieceType, direction: number, wasKiled: boolean): void;
     /* misc */
     OnRender(): void;
     OnWaterCannonExtinguishFire(position: Vector, range: number): void;
+    OnMouseMove(x: number, y: number): void;
+    OnKeyUp(key: number): void;
     OnKeyDown(key: number): void;
 }
 
@@ -40,10 +43,11 @@ export interface audio {
 export interface camera {
     restore() : void;
     restoreWithJumpCut(): void;
-    setFadeColour(r: number, g: number, b: number): void;
+    fade(color: RGBA, timeout: number, direction: CameraFade): void;
     shake(strength: number, x: number, y: number, z: number): void;
     shakeNoPos(strength: number): void;
-    setCamPositionForFixedMode(source: Vector, offset: Vector): void;
+    setPosition(source: Vector, offset: Vector): void;
+    setLookAt(position: Vector): void;
 }
 
 export interface discord {
@@ -76,15 +80,21 @@ export interface font {
     setRightJustifyWrap(wrap: number): void;
     setAlphaFade(fade: number): void;
     setDropShadowPosition(pos: number): void;
+    setBackgroundColor(color: RGBA): void;
     setColor(rgba: RGBA): void;
     setDropColor(rgba: RGBA): void;
     drawFonts(): void;
 }
 
+export interface IGameClock {
+    hour: number;
+    min: number;
+    sec: number;
+    millisecondsPerGameMinute: number;
+}
+
 export interface gta {
     respawnPlayer(pos: Vector, heading: number): void;
-    createPickup(model: number, pos: Vector, type: number): void;
-    createMarker(isSet: boolean, type: number, pos: Vector, size: number, rgba: RGBA, pulsePeriod: number, pulseFraction: number, rotateRate: number): void;
     removeNearestBuilding(pos: Vector, radius: number, model: number): void;
     restoreNearestBuilding(pos: Vector, radius: number, model: number): void;
     swapNearestBuilding(pos: Vector, radius: number, model: number, newmodel: number): void;
@@ -99,6 +109,8 @@ export interface gta {
 
     weather: number;
     gravity: number;
+
+    time: IGameClock;
 }
 
 export interface gui {
@@ -112,10 +124,8 @@ export interface loader {
     loadWeaponDat(path: string): boolean;
     loadTimeCycleDat(path: string): boolean;
     loadHandlingCfg(path: string): boolean;
-    swapDFF(modelname: string, path: string): boolean;
-    swapTXD(modelname: string, path: string): boolean;
-    swapCOL(modelname: string, path: string): boolean;
     loadRadarSprite(path: string): boolean;
+    loadObjectXml(path: string): boolean;
 }
 
 export interface messages {
@@ -139,9 +149,16 @@ export interface sprite {
     renderOneXLUSprite(vec: Vector, w: number, h: number, rgba: RGBA, intens: number, recipz: number): void;
 }
 
+export interface text {
+    get(gxt: string): string;
+    set(gxt: string, text: string): string
+}
+
 export interface timer {
     getTimeInMilliseconds(): number;
     getPreviousTimeInMilliseconds(): number;
+
+    timeStep: number;
 }
 
 export interface world {
@@ -149,4 +166,6 @@ export interface world {
     findGroundZForCoord(vec: Vector2D): number;
     processLineOfSight(vec1: Vector, vec2: Vector, checkBuildings: boolean, checkVehicles: boolean, checkPeds: boolean, checkObjects: boolean, checkDummies: boolean, ignoreSeeThrough: boolean, ignoreSomeObjects: boolean): boolean;
     findObjectsInRange(vec: Vector, radius: number, ignoreZ: boolean, checkBuildings: boolean, checkVehicles: boolean, checkPeds: boolean, checkObjects: boolean, checkDummies: boolean): Array<Entity>;
+    restoreAllObjects(): void;
+    removeAllObjects(): void;
 }

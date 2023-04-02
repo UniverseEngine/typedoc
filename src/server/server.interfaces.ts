@@ -1,5 +1,4 @@
-import { Client, NetworkElement, Vector } from "../shared";
-import { DisconnectReason } from "./server.enums";
+import { Client, DisconnectReason, NetworkElement, Vector } from "../shared";
 
 export interface IServerEvents {
     /* resource */

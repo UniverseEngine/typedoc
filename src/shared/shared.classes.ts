@@ -57,6 +57,7 @@ export declare class NetworkElement {
     public owner: number;
     getData(key: string): null|string|boolean|number;
     setData(key: string, value: null|string|boolean|number): void;
+    destroy(): boolean;
 }
 
 export declare class Transformable extends NetworkElement {
@@ -85,13 +86,11 @@ export declare class Ped extends Physical {
     public pedState: number;
     public health: number;
     public armour: number;
-    public rotationCur: number;
-    public rotationDest: number;
+    public rotation: number;
     public vehicle: Vehicle;
     public inVehicle: boolean;
     public pedType: PedType;
-    public currentWeapon: number;
-    public wepSkills: number;
+    public weapon: number;
     public wepAccuracy: number;
     public kindaStayInSamePlace: boolean;
 }
